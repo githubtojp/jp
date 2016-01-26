@@ -42,10 +42,17 @@ desired effect
 
         @include('partials.contentheader')
 
+        
+        @include('partials._errors')
+
         <!-- Main content -->
         <section class="content">
-            <!-- Your Page Content Here -->
-            @yield('main-content')
+            <div class="row">
+    
+                <!-- Your Page Content Here -->
+                @yield('main-content')
+                
+            </div>
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
@@ -56,6 +63,8 @@ desired effect
 </div><!-- ./wrapper -->
 
 @include('partials.scripts')
+
+@yield('page-scripts')
 
 </body>
 </html>

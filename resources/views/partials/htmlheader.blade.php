@@ -8,12 +8,30 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    
+
+    {{-- add this to gulp --}}
+    {{-- <link rel="stylesheet" href="{{ asset('/plugins/datatables/jquery.dataTables.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('/plugins/datatables/extensions/Scroller/css/dataTables.scroller.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/plugins/datatables/dataTables.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('/plugins/sweetalert/dist/sweetalert.css') }}">
+
+
     <!-- Theme style -->
     <link href="{{ asset('/css/AdminLTE.css') }}" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
+
+
+
+
+    {{-- 
+    AdminLTE Skins. We have chosen the skin-blue for this starter 
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect.
+    --}}
+   
+    
     <link href="{{ asset('/css/skins/skin-blue.css') }}" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
     <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css" />

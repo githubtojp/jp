@@ -3,23 +3,20 @@
 namespace jp\Http\Controllers\Auth;
 
 use jp\User;
+
 use Validator;
+
 use jp\Http\Controllers\Controller;
+
+use jp\Status;
+
+use jp\Role;
+
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
 
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
-
     use AuthenticatesAndRegistersUsers;
 
     /**
@@ -30,6 +27,8 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+        $this->redirectTo = route('backend.dashboard');
+        $this->redirectAfterLogout = route('frontend.home');
     }
 
     /**
@@ -55,10 +54,29 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+
+        # handle default roles  and status
+        $slugStatus   = isset($data['status-slug']) ? $data['status-slug'] : Status::getDefaultStatusSlug();
+        $slugRole     = isset( $data['role-slug'] ) ? $data['role-slug'] : Role::getDefaultRoleSlug();
+
+        $status = Status::getStatusBySlug( $slugStatus );
+
+        $user->status()->associate($status);
+
+        $role = Role::getRoleBySlug( $slugRole );
+
+        $user->attachRole($role);
+
+        $user->save();
+
+        return $user;
+
     }
 }

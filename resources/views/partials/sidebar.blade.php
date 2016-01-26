@@ -32,10 +32,32 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
+  
+            <li class="active">
+                <a href="{{ route('backend.dashboard') }}">
+                    <i class='fa fa-home'></i> 
+                    <span>Inicio</span>
+                </a>
+            </li>
             
-            <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>Home</span></a></li>
-            
+            @if( Auth::user()->is('admin') )
+
+                <li>
+                    <a href="{{ route('backend.users.index') }}">
+                        <i class="fa fa-users"></i>
+                        <span>Usuarios</span>
+                    </a>
+                </li>   
+
+                <li>
+                    <a href="{{ route('backend.users.create') }}">
+                        <i class="fa fa-user-plus"></i>
+                        <span>Registrar Usuarios</span>
+                    </a>
+                </li>                        
+
+            @endif
+
             {{--  
             <li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
             <li class="treeview">

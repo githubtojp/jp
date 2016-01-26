@@ -7,7 +7,10 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "acacha/admin-lte-template-laravel": "0.*"
+        "acacha/admin-lte-template-laravel": "0.*",
+        "illuminate/html": "^5.0",
+        "bican/roles": "2.1.*",
+        "laracasts/utilities": "~2.0"        
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -21,7 +24,11 @@
         ],
         "psr-4": {
             "jp\\": "app/"
-        }
+        },
+        "files" : [
+            "app/Helpers/Helpers.php"
+        ]
+        
     },
     "autoload-dev": {
         "classmap": [
