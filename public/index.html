@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ES">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">		
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<title>JP</title>
+	
+</head>
+<body data-ng-app="jpApp" data-ng-controller="mainCtrl">
+<!-- index first view -->
+	<div class="container-fluid no-padding row-fluis">
+			
+		<!-- header para pantallas grandes y extragrandes -->
+		<aside id="bigHeader" class="col-sm-3 col-dm-3 no-padding col-lg-3">
+			<!-- header with logo, menu button and social networks links -->
+			<section id="bigHead" class="col-md-12 no-padding col-lg-12 ">
+				</span><img id="logoImg" src="img/logojp.png" width="100%" >
+				<button id="bigMenuButton" class="glyphicon glyphicon-menu-hamburger"></button>
+			</section>
+
+			<!-- gallery section -->
+			<section id="bigGallery" class="col-md-12 no-padding col-lg-12 carousel slide" data-ride="carousel">
+				<!-- indicadores bolitas del slider -->
+				<ol class="carousel-indicators">
+					<li 
+					class="active"
+					data-ng-if="$first"
+					data-ng-repeat-start="slide in galleryThumb" 
+					data-target="#bigGallery" 
+					data-slide-to="{[{$index}]}" ></li>
+
+					<li 
+					data-ng-if="!$first"
+					data-ng-repeat-end 
+					data-target="#bigGallery" 
+					data-slide-to="{[{$index}]}" ></li>
+				</ol>	
+
+				<!-- contendor del slider -->
+				<section class="carousel-inner" role='listbox'>
+					<section data-ng-repeat-start="slide in galleryThumb" class="item active" data-ng-if="$first" >
+						<center>	
+							<img ng-src="{[{slide.image}]}" width="100%" height="100%">
+						</center>
+						<section class="carousel-caption">
+							<h3>{[{slide.text}]}</h3>
+						</section>
+					</section>
+					<section data-ng-repeat-end data-ng-if="!$first" class="item" >
+						<center>	
+							<img ng-src="{[{slide.image}]}" width="100%" height="100%" >
+						</center>
+						<section class="carousel-caption">
+							<h3>{[{slide.text}]}</h3>
+						</section>
+					</section>
+				</section>
+			</section>
+			<!-- video mini Player -->
+			<section id="miniPlayer" class="col-md-12 no-padding col-lg-12">
+				<video autoplay controls class="embed-resposive-item"  width="100%">
+					<source src="uploads/videos/JPI_27-01-2016.mp4" type="video/mp4">
+				</video>
+			</section>
+		</aside>
+		<!-- header para pantas pequeñas y medianas -->
+		<header id="smallHeader" class="col-xs-12">
+			
+		</header>
+		<!-- grid de artículos por categoria -->
+		<section class="col-xs-12 col-sm-9 col-dm-9 col-lg-9">
+			
+		</section>
+		
+	</div>
+<!-- category view -->
+	<div class="container-category" id="categoryView">
+		<!-- category header pantallas grandes y extragrandes-->
+		<aside>
+			
+		</aside>
+		<!-- category header pequeñas y medianas -->
+		<header>
+			
+		</header>
+		<!-- category content -->
+		<section>
+			
+		</section>
+	</div>
+<!-- full screen menu -->
+	<div class="container" id="menuView">
+		<nav>
+		</nav>
+	</div>
+<!-- Video Player -->		
+	<section id="playerSection">
+		
+	</section>
+<!-- gallery -->
+	<section id="gallerySection">
+		
+	</section>
+<!-- libs -->
+
+	<script type="text/javascript" src="plugins/angular-1.5.0/angular.min.js"></script>
+	<script type="text/javascript" src="plugins/angular-1.5.0/angular-animate.min.js"></script>
+	<script type="text/javascript" src="plugins/angular-1.5.0/angular-loader.min.js"></script>
+	<script type="text/javascript" src="plugins/angular-1.5.0/angular-route.min.js"></script>
+	<script type="text/javascript" src="plugins/angular-1.5.0/angular-sanitize.min.js"></script>
+	<script type="text/javascript" src="plugins/angular-1.5.0/angular-touch.min.js"></script>
+	<script type="text/javascript" src="plugins/angular-1.5.0/ui-bootstrap-tpls-1.1.1.min.js"></script>
+	
+
+	<script type="text/javascript" src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="plugins/jQueryUI/jquery-ui.min.js"></script>
+	<scriptspt type="text/javascript" src="plugins/sweetalert/lib/sweetalert.js"></script>
+	
+	<script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="plugins/bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript" src="plugins/bootstrap-slider/bootstrap-slider.js"></script>
+	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-slider/slider.css">
+	
+
+<!-- scripts -->
+
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/directives.js"></script>
+	<script type="text/javascript" src="js/controllers.js"></script>
+	
+
+
+<!-- styles -->
+<style type="text/css">
+		div{
+			/*border:1px dashed gray;*/
+			height: 100px;
+
+		}
+		html, body{
+			height: 100%;
+			overflow: auto;
+			background-color: #aaa;
+		}
+		.no-padding{
+			padding: 0;
+		}
+		.container-fluid{
+			height: 100%;
+		}
+
+		.item{
+			overflow-x:hidden;
+		}
+		/*for id elements*/
+
+		#bigHeader{
+			height: 100%;
+			vertical-align: middle;
+			background-image: url('/img/headbg.jpg');
+		}
+		#bigHead{
+
+			height: 40%;	
+			overflow-y:hidden;
+			text-align: center;
+			white-space: nowrap;
+			display: inline-flex;
+		}
+		#logoImg{
+			display: inline-block;
+			vertical-align: middle;
+
+			margin: auto;
+		}
+		#bigMenuButton{
+			position: absolute;
+			right: 15px;
+			top: 5px;
+			height: 50px;
+			width: 50px;
+			border-radius: 50%;
+			border: 2px solid rgb(30,80,130); 
+			color: white;
+			background: rgb(20,70,120);
+		}
+
+		#bigGallery{
+			height: 30%;
+		}
+
+		#miniPlayer{
+			height: 30%;
+		}
+
+		@media (max-width:991px ){
+
+			#bigHeader{
+				display: none;
+			}
+			#smallHeader{
+				display: block;
+			}
+		
+		}
+		@media (min-width: 992px){
+
+
+			#bigHeader{
+				display: block;
+			}
+			#smallHeader{
+				display: none;
+			}
+			
+		}
+
+		/*temporalmente deshabilitados*/
+		#categoryView, #playerSection, #gallerySection, #menuView{
+			display: none
+		}
+
+
+	</style>
+</body>
+</html>
