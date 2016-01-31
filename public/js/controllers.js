@@ -37,7 +37,7 @@ app.controller("mainCtrl",["$scope","$window","$http","$interval",function($scop
 				{articleUrl:"#", thumb:"http://lorempixel.com/400/300/business/3/",title:"Loren Ipsum 3",author:"author"}			
 			]},
 			{category:5,categoryTitle:"Deportes",feature:[
-				{articleUrl:"#", thumb:"http://lorempixel.com/400/300/sports/4/",title:"Lorem Ipsum 1",author:"author"},
+				{articleUrl:"#", thumb:"http://lorempixel.com/400/300/sports/7/",title:"Lorem Ipsum 1",author:"author"},
 				{articleUrl:"#", thumb:"http://lorempixel.com/400/300/sports/5/",title:"Loren Ipsum 2",author:"author"},
 				{articleUrl:"#", thumb:"http://lorempixel.com/400/300/sports/6/",title:"Loren Ipsum 3",author:"author"}			
 			]},
