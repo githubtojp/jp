@@ -8,6 +8,7 @@
 	
 </head>
 <body data-ng-app="jpApp" data-ng-controller="mainCtrl">
+<!-- <button ng-click="randomCategorySlide()">Click</button> -->
 <!-- index first view -->
 	<div class="container-fluid no-padding row-fluis">
 			
@@ -59,18 +60,61 @@
 			</section>
 			<!-- video mini Player -->
 			<section id="miniPlayer" class="col-md-12 no-padding col-lg-12">
-				<video autoplay controls class="embed-resposive-item"  width="100%">
+				<video  controls class="embed-resposive-item"  width="100%">
 					<source src="uploads/videos/JPI_27-01-2016.mp4" type="video/mp4">
 				</video>
 			</section>
 		</aside>
-		<!-- header para pantas pequeñas y medianas -->
+		<!-- header para pantallas pequeñas y medianas -->
 		<header id="smallHeader" class="col-xs-12">
-			
+			<!-- sección logo pantallas medianas y pequeñas -->
+			<section id="smallLogo" class="col-xs-4 smallHeaderItem">
+				<img src="img/logojpSmall.png" height="100%">
+			</section>
+			<!-- sección galería pequeñas -->
+			<section id="smallGallery" class="col-xs-4 smallHeaderItem">
+				<img src="img/galleryIcon.png" height="100%">
+			</section>
+			<!-- sección video pequeñas -->
+			<section id="videoPlayerSmall" class="col-xs-4 smallHeaderItem">
+				<img src="img/videoIcon.png" height="100%">
+			</section>
 		</header>
+<!-- parte derecha de la pantalla -->		
 		<!-- grid de artículos por categoria -->
-		<section class="col-xs-12 col-sm-9 col-dm-9 col-lg-9">
-			
+		<section class="col-xs-12 col-sm-9 col-dm-9 col-lg-9 no-padding" style="height:100%">
+<!-- IMPORTANTE el siguiente ng-repeat se tiene que adecuarl al json final -->
+			<section ng-repeat="category in categoryGrid" id="{[{'c'+category.category}]}" class="col-sm-6 col-md-4 col-lg-4 gridElement no-padding carousel slide" data-ride="carousel" data-interval="false">
+				<!-- indicadores bolitas del slider -->
+				<ol class="carousel-indicators">
+					<li class="active" data-ng-if="$first"
+					data-ng-repeat-start="slide in category.feature" 
+					data-target="{[{'#c'+cagetory.category}]}"  data-slide-to="{[{$index}]}" ></li>
+
+					<li data-ng-if="!$first" data-ng-repeat-end data-target="{[{'#c'+cagetory.category}]}" 
+					data-slide-to="{[{$index}]}" ></li>
+				</ol>	
+
+				<!-- contendor del slider -->
+				<section class="carousel-inner" role='listbox'>
+					<section data-ng-repeat-start="slide in category.feature" class="item active" data-ng-if="$first" >
+						<center>	
+							<img ng-src="{[{slide.thumb}]}" width="100%" height="100%">
+						</center>
+						<section class="carousel-caption">
+							<h3>{[{slide.title}]}</h3>
+						</section>
+					</section>
+					<section data-ng-repeat-end data-ng-if="!$first" class="item" >
+						<center>	
+							<img ng-src="{[{slide.thumb}]}" width="100%" height="100%" >
+						</center>
+						<section class="carousel-caption">
+							<h3>{[{slide.title}]}</h3>
+						</section>
+					</section>
+				</section>
+			</section>
 		</section>
 		
 	</div>
@@ -194,6 +238,19 @@
 			height: 30%;
 		}
 
+		#smallHeader{
+			background-image: url('/img/headbgSmall.jpg');
+			height: 20%;
+		}
+
+		.smallHeaderItem{
+			height: 100%;
+			text-align: center;
+		}
+
+		.gridElement{
+			max-height: 33.333333%;
+		}
 		@media (max-width:991px ){
 
 			#bigHeader{
